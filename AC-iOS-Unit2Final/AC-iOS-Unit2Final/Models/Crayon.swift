@@ -40,14 +40,25 @@ class Crayon {
         Crayon(name: "Blue Green", red: 13, green: 152, blue: 186, hex: "#0D98BA"),
         Crayon(name: "Blue Violet", red: 115, green: 102, blue: 189, hex: "#7366BD")
     ]
-//    convenience init(name: String, hexInput:String) {
-//        
-//        var red = 0.0
-//        var green = 0.0
-//        var blue = 0.0
-//        
-//        self.init(name: name, red: red, green: green, blue: blue, hex: hexInput)
-//    }
+    convenience init(name: String, hexInput:String) {
+        var red:Double = 0
+        var green:Double = 0
+        var blue:Double = 0
+        if hexInput.count == 7 && hexInput[hexInput.startIndex] == "#" {
+            var myHex =  hexInput
+            myHex.remove(at: myHex.startIndex)
+            let myHexArray = Array(myHex)
+            let redHex =  String(myHexArray[0]).lowercased() + String(myHexArray[1])
+             red = Double(UInt64(redHex, radix:16)!)
+            let greenHex = String(myHexArray[2]).lowercased() + String(myHexArray[3])
+             green = Double(UInt64(greenHex, radix:16)!)
+            let blueHex = String(myHexArray[4]).lowercased() + String(myHexArray[5])
+             blue = Double(UInt64(blueHex, radix:16)!)
+            
+        }
+  
+        self.init(name: name, red: red, green: green, blue: blue, hex: hexInput)
+    }
 }
 
 
