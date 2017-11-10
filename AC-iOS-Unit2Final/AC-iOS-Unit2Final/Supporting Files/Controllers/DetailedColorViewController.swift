@@ -35,7 +35,6 @@ class DetailedColorViewController: UIViewController {
             self.greenSliderOutlet.value = Float(safeCrayon.green/255)
             self.alphaStepperOutlet.value = 1
         }
-        print(redSliderOultet.maximumValue, greenSliderOutlet.maximumValue, blueSliderOutlet.maximumValue)
         
     }
     // Mark: Sliders
@@ -55,7 +54,6 @@ class DetailedColorViewController: UIViewController {
     }
     
     @IBAction func alphaStepper(_ sender: UIStepper) {
-        print(sender.value)
         self.colorView.backgroundColor = UIColor(red: CGFloat(Settings.red/255), green: CGFloat(Settings.green/255), blue: CGFloat(Settings.blue/255), alpha: CGFloat(Float(sender.value)))
     }
     
@@ -63,17 +61,14 @@ class DetailedColorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if let safeCrayon = crayon{
-            print(safeCrayon.blue/255, safeCrayon.red/255, safeCrayon.green/255)
             self.colorName.text = safeCrayon.name
             self.colorView.backgroundColor = UIColor(red: CGFloat(safeCrayon.red/255), green: CGFloat(safeCrayon.green/255), blue: CGFloat(safeCrayon.blue/255), alpha: 1)
             self.blueSliderOutlet.value = Float(Settings.blue/255)
-            print(blueSliderOutlet.value,"the settings are ", Settings.blue)
             self.redSliderOultet.value = Float(Settings.red/255)
             self.greenSliderOutlet.value = Float(Settings.green/255)
             self.alphaStepperOutlet.value = Settings.alpha
             self.alphaStepperOutlet.stepValue = 0.1
             self.alphaStepperOutlet.maximumValue = Settings.alpha
-            print(redSliderOultet.maximumValue, greenSliderOutlet.maximumValue, blueSliderOutlet.maximumValue)
             
         }
         
