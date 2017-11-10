@@ -20,20 +20,22 @@ class DetailedColorViewController: UIViewController {
     
     @IBOutlet weak var redSliderOultet: UISlider!
     
-    @IBOutlet weak var alphaSliderOutlet: UISlider!
+
     
     @IBOutlet weak var blueSliderOutlet: UISlider!
     
-
+    @IBOutlet weak var alphaStepperOutlet: UIStepper!
+    
     // MarkL ResetButton
     @IBAction func resetButton(_ sender: UIButton) {
         if let safeCrayon = crayon{
         self.colorView.backgroundColor = UIColor(red: CGFloat((safeCrayon.red)/255), green: CGFloat(safeCrayon.green/255), blue: CGFloat(safeCrayon.blue/255), alpha: 1)
-            self.blueSliderOutlet.value = Float(safeCrayon.blue)
-            self.redSliderOultet.value = Float(safeCrayon.red)
-            self.greenSliderOutlet.value = Float(safeCrayon.green)
-            self.alphaSliderOutlet.value = 1
+            self.blueSliderOutlet.value = Float(safeCrayon.blue/255)
+            self.redSliderOultet.value = Float(safeCrayon.red/255)
+            self.greenSliderOutlet.value = Float(safeCrayon.green/255)
+            self.alphaStepperOutlet.value = 1
         }
+                    print(redSliderOultet.maximumValue, greenSliderOutlet.maximumValue, blueSliderOutlet.maximumValue)
         
     }
         // Mark: Sliders
@@ -53,20 +55,28 @@ class DetailedColorViewController: UIViewController {
     }
     
     
-    @IBAction func alphaSliderInput(_ sender: UISlider) {
-                self.colorView.backgroundColor = UIColor(red: CGFloat(Settings.red/255), green: CGFloat(Settings.green/255), blue: CGFloat(Settings.blue/255), alpha: CGFloat(sender.value))
+
+    
+    @IBAction func alphaStepper(_ sender: UIStepper) {
+        print(sender.value)
+                        self.colorView.backgroundColor = UIColor(red: CGFloat(Settings.red/255), green: CGFloat(Settings.green/255), blue: CGFloat(Settings.blue/255), alpha: CGFloat(Float(sender.value)))
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         if let safeCrayon = crayon{
+            print(safeCrayon.blue/255, safeCrayon.red/255, safeCrayon.green/255)
             self.colorName.text = safeCrayon.name
             self.colorView.backgroundColor = UIColor(red: CGFloat(safeCrayon.red/255), green: CGFloat(safeCrayon.green/255), blue: CGFloat(safeCrayon.blue/255), alpha: 1)
-            self.blueSliderOutlet.value = Float(Settings.blue)
-            self.redSliderOultet.value = Float(Settings.red)
-            self.greenSliderOutlet.value = Float(Settings.green)
-            self.alphaSliderOutlet.value = Float(Settings.alpha)
+            self.blueSliderOutlet.value = Float(Settings.blue/255)
+            print(blueSliderOutlet.value,"the settings are ", Settings.blue)
+            self.redSliderOultet.value = Float(Settings.red/255)
+            self.greenSliderOutlet.value = Float(Settings.green/255)
+            self.alphaStepperOutlet.value = Settings.alpha
+            self.alphaStepperOutlet.stepValue = 0.1
+            self.alphaStepperOutlet.maximumValue = Settings.alpha
+            print(redSliderOultet.maximumValue, greenSliderOutlet.maximumValue, blueSliderOutlet.maximumValue)
             
         }
 

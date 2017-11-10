@@ -12,8 +12,7 @@ class ColorTableViewController: UIViewController,UITableViewDelegate, UITableVie
 
     
     @IBOutlet weak var myTableView: UITableView!
-    
-    var myCrayons = [Crayon]()
+        var myCrayons = [Crayon]()
     //Mark TableView: Required methods are the number of rows as well as how it will look like and the setting the delegate and the data source
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return myCrayons.count
@@ -25,37 +24,17 @@ class ColorTableViewController: UIViewController,UITableViewDelegate, UITableVie
             defaultCell.textLabel?.text = crayonSetup.name
             return defaultCell
         }
-        
         cell.textLabel?.text = crayonSetup.name
         cell.detailTextLabel?.text = crayonSetup.hex
         cell.backgroundColor = UIColor(red:CGFloat(crayonSetup.red/255), green: CGFloat(crayonSetup.green/255), blue: CGFloat(crayonSetup.blue/255)
             , alpha: 1.0)
         cell.selectionStyle = UITableViewCellSelectionStyle.none
+        if crayonSetup.blue > 150 || crayonSetup.red > 150 || crayonSetup.green > 150 || crayonSetup.hex == "#000000"{
+            cell.textLabel?.textColor = UIColor.white
+            cell.detailTextLabel?.textColor = UIColor.white
+        }
         return cell
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     override func viewDidLoad() {

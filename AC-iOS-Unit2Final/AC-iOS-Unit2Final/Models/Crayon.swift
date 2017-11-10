@@ -5,6 +5,7 @@
 //  Created by Karen Fuentes on 11/7/17.
 //  Copyright © 2017 Karen Fuentes. All rights reserved.
 //
+// for hex conversions I have used resources from https://stackoverflow.com/questions/24263007/how-to-use-hex-colour-values
 
 import Foundation
 
@@ -39,5 +40,23 @@ class Crayon {
         Crayon(name: "Blue Green", red: 13, green: 152, blue: 186, hex: "#0D98BA"),
         Crayon(name: "Blue Violet", red: 115, green: 102, blue: 189, hex: "#7366BD")
     ]
+//    convenience init(name: String, hexInput:String) {
+//        
+//        var red = 0.0
+//        var green = 0.0
+//        var blue = 0.0
+//        
+//        self.init(name: name, red: red, green: green, blue: blue, hex: hexInput)
+//    }
 }
+
+
+
+
+
+
+
+
+
+
 
