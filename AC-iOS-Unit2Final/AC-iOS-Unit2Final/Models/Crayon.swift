@@ -5,7 +5,6 @@
 //  Created by Karen Fuentes on 11/7/17.
 //  Copyright © 2017 Karen Fuentes. All rights reserved.
 //
-// for hex conversions I have used resources from https://stackoverflow.com/questions/24263007/how-to-use-hex-colour-values
 
 import Foundation
 
