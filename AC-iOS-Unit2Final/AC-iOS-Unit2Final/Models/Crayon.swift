@@ -49,14 +49,13 @@ class Crayon {
             myHex.remove(at: myHex.startIndex)
             let myHexArray = Array(myHex)
             let redHex =  String(myHexArray[0]).lowercased() + String(myHexArray[1])
-             red = Double(UInt64(redHex, radix:16)!)
+            red = Double(UInt64(redHex, radix:16)!)
             let greenHex = String(myHexArray[2]).lowercased() + String(myHexArray[3])
-             green = Double(UInt64(greenHex, radix:16)!)
+            green = Double(UInt64(greenHex, radix:16)!)
             let blueHex = String(myHexArray[4]).lowercased() + String(myHexArray[5])
-             blue = Double(UInt64(blueHex, radix:16)!)
+            blue = Double(UInt64(blueHex, radix:16)!)
             
         }
-  
         self.init(name: name, red: red, green: green, blue: blue, hex: hexInput)
     }
 }
