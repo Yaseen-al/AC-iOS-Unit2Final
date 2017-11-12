@@ -10,7 +10,6 @@ import UIKit
 
 class ColorTableViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
 
-    
     @IBOutlet weak var myTableView: UITableView!
         var myCrayons = [Crayon]()
     //Mark TableView: Required methods are the number of rows as well as how it will look like and the setting the delegate and the data source
@@ -29,14 +28,12 @@ class ColorTableViewController: UIViewController,UITableViewDelegate, UITableVie
         cell.backgroundColor = UIColor(red:CGFloat(crayonSetup.red/255), green: CGFloat(crayonSetup.green/255), blue: CGFloat(crayonSetup.blue/255)
             , alpha: 1.0)
         cell.selectionStyle = UITableViewCellSelectionStyle.none
-        if crayonSetup.blue > 150 || crayonSetup.red > 150 || crayonSetup.green > 150 || crayonSetup.hex == "#000000"{
+        if crayonSetup.blue < 140 || crayonSetup.red < 140 || crayonSetup.green < 140 || crayonSetup.hex == "#000000"{
             cell.textLabel?.textColor = UIColor.white
             cell.detailTextLabel?.textColor = UIColor.white
         }
         return cell
     }
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.myCrayons = Crayon.allTheCrayons
@@ -49,11 +46,7 @@ class ColorTableViewController: UIViewController,UITableViewDelegate, UITableVie
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-
     // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? DetailedColorViewController{

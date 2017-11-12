@@ -7,23 +7,15 @@
 //
 
 import UIKit
-
 class DetailedColorViewController: UIViewController {
-    
+    // Crayon instance
     var crayon:Crayon? = nil
-    
+    // controls outlets
     @IBOutlet weak var colorName: UILabel!
-    
     @IBOutlet weak var colorView: UIView!
-    
     @IBOutlet weak var greenSliderOutlet: UISlider!
-    
     @IBOutlet weak var redSliderOultet: UISlider!
-    
-    
-    
     @IBOutlet weak var blueSliderOutlet: UISlider!
-    
     @IBOutlet weak var alphaStepperOutlet: UIStepper!
     
     // MarkL ResetButton
@@ -42,30 +34,23 @@ class DetailedColorViewController: UIViewController {
         
     }
     // Mark: Sliders
-    
     @IBAction func redSliderInput(_ sender: UISlider) {
         Settings.red = Double(sender.value)*255
         self.colorView.backgroundColor = UIColor(red: CGFloat(Settings.red/255), green: CGFloat(Settings.green/255), blue: CGFloat(Settings.blue/255), alpha: CGFloat(Settings.alpha))
     }
-    
-    
     @IBAction func greenSliderInput(_ sender: UISlider) {
         Settings.green = Double(sender.value)*255
         self.colorView.backgroundColor = UIColor(red: CGFloat(Settings.red/255), green: CGFloat(Settings.green/255), blue: CGFloat(Settings.blue/255), alpha: CGFloat(Settings.alpha))
     }
-    
-    
     @IBAction func blueSliderInput(_ sender: UISlider) {
         Settings.blue = Double(sender.value)*255
         self.colorView.backgroundColor = UIColor(red: CGFloat(Settings.red/255), green: CGFloat(Settings.green/255), blue: CGFloat(Settings.blue/255), alpha: CGFloat(Settings.alpha))
     }
-    
     @IBAction func alphaStepper(_ sender: UIStepper) {
         Settings.alpha = Double(sender.value)
         self.colorView.backgroundColor = UIColor(red: CGFloat(Settings.red/255), green: CGFloat(Settings.green/255), blue: CGFloat(Settings.blue/255), alpha: CGFloat(Settings.alpha))
     }
-    
-    
+    // viewDidload setup
     override func viewDidLoad() {
         super.viewDidLoad()
         if let safeCrayon = crayon{
@@ -77,19 +62,9 @@ class DetailedColorViewController: UIViewController {
             self.alphaStepperOutlet.value = Settings.alpha
             self.alphaStepperOutlet.stepValue = 0.1
             self.alphaStepperOutlet.maximumValue = Settings.alpha
-            print(safeCrayon.red, Settings.red)
-
-            
         }
         
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
     /*
      // MARK: - Navigation
      
