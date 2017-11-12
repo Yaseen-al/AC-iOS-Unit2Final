@@ -34,27 +34,35 @@ class DetailedColorViewController: UIViewController {
             self.redSliderOultet.value = Float(safeCrayon.red/255)
             self.greenSliderOutlet.value = Float(safeCrayon.green/255)
             self.alphaStepperOutlet.value = 1
+            Settings.red = safeCrayon.red
+            Settings.green = safeCrayon.green
+            Settings.blue = safeCrayon.blue
+            Settings.alpha = 1
         }
         
     }
     // Mark: Sliders
     
     @IBAction func redSliderInput(_ sender: UISlider) {
-        self.colorView.backgroundColor = UIColor(red: CGFloat(sender.value), green: CGFloat(Settings.green/255), blue: CGFloat(Settings.blue/255), alpha: CGFloat(Settings.alpha))
+        Settings.red = Double(sender.value)*255
+        self.colorView.backgroundColor = UIColor(red: CGFloat(Settings.red/255), green: CGFloat(Settings.green/255), blue: CGFloat(Settings.blue/255), alpha: CGFloat(Settings.alpha))
     }
     
     
     @IBAction func greenSliderInput(_ sender: UISlider) {
-        self.colorView.backgroundColor = UIColor(red: CGFloat(Settings.red/255), green: CGFloat(sender.value), blue: CGFloat(Settings.blue/255), alpha: CGFloat(Settings.alpha))
+        Settings.green = Double(sender.value)*255
+        self.colorView.backgroundColor = UIColor(red: CGFloat(Settings.red/255), green: CGFloat(Settings.green/255), blue: CGFloat(Settings.blue/255), alpha: CGFloat(Settings.alpha))
     }
     
     
     @IBAction func blueSliderInput(_ sender: UISlider) {
-        self.colorView.backgroundColor = UIColor(red: CGFloat(Settings.red/255), green: CGFloat(Settings.green/255), blue: CGFloat(sender.value), alpha: CGFloat(Settings.alpha))
+        Settings.blue = Double(sender.value)*255
+        self.colorView.backgroundColor = UIColor(red: CGFloat(Settings.red/255), green: CGFloat(Settings.green/255), blue: CGFloat(Settings.blue/255), alpha: CGFloat(Settings.alpha))
     }
     
     @IBAction func alphaStepper(_ sender: UIStepper) {
-        self.colorView.backgroundColor = UIColor(red: CGFloat(Settings.red/255), green: CGFloat(Settings.green/255), blue: CGFloat(Settings.blue/255), alpha: CGFloat(Float(sender.value)))
+        Settings.alpha = Double(sender.value)
+        self.colorView.backgroundColor = UIColor(red: CGFloat(Settings.red/255), green: CGFloat(Settings.green/255), blue: CGFloat(Settings.blue/255), alpha: CGFloat(Settings.alpha))
     }
     
     
@@ -69,10 +77,11 @@ class DetailedColorViewController: UIViewController {
             self.alphaStepperOutlet.value = Settings.alpha
             self.alphaStepperOutlet.stepValue = 0.1
             self.alphaStepperOutlet.maximumValue = Settings.alpha
+            print(safeCrayon.red, Settings.red)
+
             
         }
         
-        // Do any additional setup after loading the view.
     }
     
     override func didReceiveMemoryWarning() {
